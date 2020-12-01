@@ -1,0 +1,7 @@
+This is a comparator software for businesses/individuals that track their money in Google Sheets.
+It accepts a CSV from a bank detailing the transcations, and after logging in to Google Sheets, you can select the sheets and map the respective columns the data appears in.
+
+After everything is complete, clicking "Match" will display a list of transactions "Missed" from the sheets that do appear in the google sheet.
+It will also generate another spreadsheet 'report' that simply highlights everything green that does appear in the bank csv- this way you have a complete list of what is missing on both sides.
+
+The google app credentials have been omitted from this commit, for obvious reasons. You'll need to put google's client_secret.json file in the directory with index.py in order to run it properly.
