@@ -177,22 +177,30 @@ class GUI:
 
         reader = csv.reader(self.file)
         self.file.seek(0)
+
         for i in reader:
-            if i[bank_column].replace(".", "").isdigit():
-                row = {'amount':i[bank_column]}
+            length = len(i)
+
+            if length <= bank_column or length <= date_column or length <= desc_column:
+                continue
+
+            try:
+                row = {'amount':abs(float(i[bank_column])), "pure_amount": i[bank_column]}
                 if desc_column:
                     row["description"] = i[desc_column]
                 if date_column:
                     row["date"] = i[date_column]
 
                 self.transactions_from_bank.append(row)
+            except ValueError:
+                continue
 
         self.result_box.delete(0, "end")  # clear the box before working on it
         disparities, rows_to_highlight \
             = Google_Service.get_disparity_list(self.transactions_from_bank, self.transactions_from_spreadsheet)
 
         for i in disparities:
-            self.result_box.insert("end", Google_Service.formatMoney(i["amount"]) + " " + i["date"] + ' ' + i["description"])
+            self.result_box.insert("end", Google_Service.formatMoney(i["pure_amount"]) + " " + i["date"] + ' ' + i["description"])
 
         self.google.generate_new_sheet(sheet_index, rows_to_highlight, sheet_column)
 

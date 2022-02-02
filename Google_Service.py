@@ -57,7 +57,7 @@ class GoogleService:
 
     def get_drive_spreadsheets(self):
         if len(self.files) == 0:
-            self.files = self.drive_service.files().list(q="mimeType = 'application/vnd.google-apps.spreadsheet' and trashed=false")\
+            self.files = self.drive_service.files().list(q="mimeType = 'application/vnd.google-apps.spreadsheet' and trashed=false") \
                 .execute()
 
         return self.files
@@ -182,7 +182,7 @@ def get_disparity_list(bank_transaction, sheet_transaction):
     # massage for our purposes- mainly to add a used flag
     sheet_transaction_use = []
     for i in sheet_transaction:
-        sheet_transaction_use.append({"amount": i, "used": False})
+        sheet_transaction_use.append({"amount": abs(i), "used": False})
 
     for i in bank_transaction:
         found = False
