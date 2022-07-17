@@ -1,7 +1,17 @@
 This is a comparator software for businesses/individuals that track their money in Google Sheets.
 It accepts a CSV from a bank detailing the transcations, and after logging in to Google Sheets, you can select the sheets and map the respective columns the data appears in.
 
-After everything is complete, clicking "Match" will display a list of transactions "Missed" from the sheets that do appear in the google sheet.
-It will also generate another spreadsheet 'report' that simply highlights everything green that does appear in the bank csv- this way you have a complete list of what is missing on both sides.
-
 The google app credentials have been omitted from this commit, for obvious reasons. You'll need to put google's client_secret.json file in the directory with index.py in order to run it properly.
+
+
+To Run this software, simply clone it and install dependencies.
+
+Create an "app" with google in the (https://console.cloud.google.com/apis/dashboard), and download the "secret". The app
+terminates after you click "download sheets" if you do not have client_secret.json in the same directory.
+
+This is all it takes to run.
+
+Attempts were made to make a pyinstaller and a py2exe executable for this, but unfortunately the way that software chooses
+what files to include and the way google packages resources with its python packages are incompatible.
+
+As such, you will either have to create a python venv and hold it in there or globally install the packages. Not very friendly for consumer software. Perhaps C# would have been a better solution for a windows application like this.
