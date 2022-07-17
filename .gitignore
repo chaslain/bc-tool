@@ -7,3 +7,4 @@ dist/
 include/
 pyvenv.cfg
 bin/
+Scripts/
