@@ -10,3 +10,4 @@ bin/
 Scripts/
 .vscode/
 .idea/
+*.pyc
