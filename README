@@ -11,7 +11,4 @@ terminates after you click "download sheets" if you do not have client_secret.js
 
 This is all it takes to run.
 
-Attempts were made to make a pyinstaller and a py2exe executable for this, but unfortunately the way that software chooses
-what files to include and the way google packages resources with its python packages are incompatible.
-
-As such, you will either have to create a python venv and hold it in there or globally install the packages. Not very friendly for consumer software. Perhaps C# would have been a better solution for a windows application like this.
+If you want an executable, make sure to run `pyinstaller index.spec` which will generate a directory dist/index which contains all the files needed for execution.
