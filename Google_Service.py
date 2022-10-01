@@ -93,10 +93,10 @@ class GoogleService:
 
             try:
                 shouldAppend = row["values"][sheet_column]["effectiveValue"]["numberValue"] != 0
-
-
             except KeyError:
                 shouldAppend = False
+            except IndexError:
+                pass
 
             if shouldAppend:
                 if len(row['values']) > maxSize:

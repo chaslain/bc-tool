@@ -171,9 +171,15 @@ class GUI:
         self.transactions_from_spreadsheet = []
         self.transactions_from_bank = [] # clear prior results
 
+        i = 0
         for oneData in sheet["data"][0]["rowData"]:
-            if "effectiveValue" in oneData["values"][sheet_column] and "numberValue" in oneData["values"][sheet_column]["effectiveValue"]:
-                self.transactions_from_spreadsheet.append(oneData["values"][sheet_column]["effectiveValue"]["numberValue"])
+            i+=1
+            try:
+                if "effectiveValue" in oneData["values"][sheet_column] and "numberValue" in oneData["values"][sheet_column]["effectiveValue"]:
+                    self.transactions_from_spreadsheet.append(oneData["values"][sheet_column]["effectiveValue"]["numberValue"])
+            except IndexError:
+                pass
+                # this can happen for some inexplicable reason... screw python.
 
         reader = csv.reader(self.file)
         self.file.seek(0)
